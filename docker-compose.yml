@@ -1,0 +1,5 @@
+version: '3.8'
+services:
+  vips:
+    build: .
+    image: vips:8.14.4
