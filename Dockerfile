@@ -4,7 +4,7 @@ RUN \
     curl -SL https://github.com/libvips/libvips/archive/refs/tags/v8.15.3.tar.gz | \
     tar -xzC /tmp/libvips
 
-FROM node:18.18-bookworm-slim AS base
+FROM node:18.20.5-bookworm-slim AS base
 
 RUN apt-get update && apt-get install -y \
     build-essential \
