@@ -1,11 +1,11 @@
-FROM curlimages/curl AS fetch
+FROM --platform=$BUILDPLATFORM curlimages/curl AS fetch
 ARG LIBVIPS_VERSION=8.15.3
 RUN \
     mkdir -p /tmp/libvips && \
     curl -SL https://github.com/libvips/libvips/archive/refs/tags/v${LIBVIPS_VERSION}.tar.gz | \
     tar -xzC /tmp/libvips
 
-FROM curlimages/curl AS fetch-pdfium
+FROM --platform=$BUILDPLATFORM curlimages/curl AS fetch-pdfium
 ARG TARGETARCH
 ARG PDFIUM_VERSION=6721
 RUN \
