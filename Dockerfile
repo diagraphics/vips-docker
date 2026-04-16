@@ -8,8 +8,9 @@ RUN \
 FROM --platform=$BUILDPLATFORM curlimages/curl AS fetch-pdfium
 ARG TARGETARCH
 ARG PDFIUM_VERSION=6721
+COPY ./targetarch /targetarch
 RUN \
-    PDFIUM_ARCH=$([ "$TARGETARCH" = "arm64" ] && echo "arm64" || echo "x64") && \
+    PDFIUM_ARCH=$(/targetarch) && \
     mkdir -p /tmp/pdfium && \
     curl -SL https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F${PDFIUM_VERSION}/pdfium-linux-${PDFIUM_ARCH}.tgz | \
     tar -xzC /tmp/pdfium

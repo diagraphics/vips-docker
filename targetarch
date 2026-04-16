@@ -1,0 +1,25 @@
+#!/bin/sh -e
+
+if [ -z "${TARGETARCH}" ]; then
+    echo "Error: TARGETARCH must be set" >&2
+    exit 1
+fi
+
+case "${TARGETARCH}" in
+    amd64)
+        echo "x64"
+        ;;
+    arm64)
+        echo "arm64"
+        ;;
+    arm)
+        echo "arm"
+        ;;
+    386)
+        echo "x86"
+        ;;
+    *)
+        echo "Unsupported architecture: ${TARGETARCH}" >&2
+        exit 1
+        ;;
+esac
